@@ -1,0 +1,42 @@
+# Register
+POST http://localhost:8000/api/auth/register
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "123"
+}
+
+###
+
+# Login
+POST http://localhost:8000/api/auth/login
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "123"
+}
+
+###
+
+# Auth
+POST http://localhost:8000/api/auth/
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoidGVzdCIsImlhdCI6MTcxOTg2MzI2OCwiZXhwIjoxNzE5OTQ5NjY4fQ.6yoJ17mwfNDZ8hTwc7MNFTVQNBQ3DjI7hdDFY3coMx4
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "123"
+}
+
+###
+
+# Advanced Search
+GET http://localhost:8000/api/titles/advancedsearch?sort=oldest&maxYear=2022
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoidGVzdCIsImlhdCI6MTcxOTg2MzI2OCwiZXhwIjoxNzE5OTQ5NjY4fQ.6yoJ17mwfNDZ8hTwc7MNFTVQNBQ3DjI7hdDFY3coMx4
+# Content-Type: application/json
