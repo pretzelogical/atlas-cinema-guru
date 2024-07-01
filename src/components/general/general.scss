@@ -1,0 +1,16 @@
+@import '../../colors.scss';
+
+.input-container {
+
+  .input-label {
+    label {
+      font-size: 18px;
+      margin-left: 5px;
+    }
+  }
+
+  input {
+    border: none;
+    border-bottom: 1px solid $COLOR_PRIMARY;
+  }
+}

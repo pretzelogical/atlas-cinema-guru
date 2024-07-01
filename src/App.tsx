@@ -2,6 +2,7 @@ import Input from "./components/general/Input";
 import { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import './App.scss';
 
 function App() {
   const [username, setUsername] = useState<string>('');
@@ -10,7 +11,7 @@ function App() {
       <h1>Cinema guru</h1>
       <h2>Input</h2>
       <Input
-        label="Username"
+        label="Username:"
         type="text"
         className="input"
         value={username}

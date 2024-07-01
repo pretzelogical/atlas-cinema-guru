@@ -1,4 +1,4 @@
-import './general.css';
+import './general.scss';
 import '@fortawesome/fontawesome-svg-core';
 import { faUnlink } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
