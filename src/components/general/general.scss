@@ -3,9 +3,8 @@
 .input-container {
 
   .input-label {
-    font-size: 14px;
-    label {
-      margin-left: 4px;
+    svg {
+      margin-right: 4px;
     }
   }
 
@@ -36,8 +35,27 @@
   select {
     border: none;
     border-bottom: 1px solid $COLOR_PRIMARY;
-    background-color: transparent;
+    background-color: $COLOR_BG_FADED;
     color: $COLOR_TEXT;
     font-size: 13px;
+  }
+}
+
+.button {
+  border: none;
+  background-color: $COLOR_PRIMARY_FADED;
+  color: $COLOR_TEXT;
+  padding: 6px;
+  cursor: pointer;
+  svg {
+    margin-right: 4px;
+    cursor: pointer;
+  }
+  label {
+    cursor: pointer;
+  }
+
+  &:hover {
+    background-color: $COLOR_PRIMARY;
   }
 }
