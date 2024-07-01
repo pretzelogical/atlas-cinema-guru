@@ -3,14 +3,41 @@
 .input-container {
 
   .input-label {
+    font-size: 14px;
     label {
-      font-size: 18px;
-      margin-left: 5px;
+      margin-left: 4px;
     }
   }
 
   input {
     border: none;
     border-bottom: 1px solid $COLOR_PRIMARY;
+    background-color: transparent;
+    color: $COLOR_TEXT;
+    background-color: $COLOR_BG_FADED;
+  }
+
+  &--black {
+    @extend .input-container;
+    input {
+      color: $COLOR_TEXT_ALT;
+      background-color: $COLOR_BG_ALT;
+    }
+    .input-label {
+      label {
+        color: $COLOR_TEXT_ALT;
+      }
+    }
+  }
+}
+
+
+.select_input-container {
+  select {
+    border: none;
+    border-bottom: 1px solid $COLOR_PRIMARY;
+    background-color: transparent;
+    color: $COLOR_TEXT;
+    font-size: 13px;
   }
 }

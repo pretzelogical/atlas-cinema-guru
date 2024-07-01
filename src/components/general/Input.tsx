@@ -1,14 +1,12 @@
 import './general.scss';
 import '@fortawesome/fontawesome-svg-core';
-import { faUnlink } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ChangeEvent, ChangeEventHandler } from 'react';
 
 
 export type InputProps = {
   label: string,
   type: string,
-  className: string,
+  className?: string,
   value: string | number,
   setValue: (x: unknown) => void,
   icon?: JSX.Element,
@@ -19,7 +17,7 @@ export type InputProps = {
 export default function Input({
   label,
   type,
-  className,
+  className = '',
   value,
   setValue,
   icon,
@@ -28,19 +26,21 @@ export default function Input({
   const handleInput: ChangeEventHandler<HTMLInputElement> =
     (e: ChangeEvent<HTMLInputElement>) => {
       setValue((e.target as HTMLInputElement).value);
-  };
+    };
 
   return (
-    <div className="input-container">
+    <div className={
+      className === ''
+        ? "input-container"
+        : `input-container--${className}`}>
       <div className="input-label">
-        {icon ? icon : <FontAwesomeIcon icon={faUnlink} />}
+        {icon ? icon : null}
         <label>{label}</label>
       </div>
       <input
         type={type}
         value={value}
         onChange={handleInput}
-        className={className}
         {...inputAttributes}
       />
     </div>

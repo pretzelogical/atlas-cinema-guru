@@ -1,7 +1,11 @@
+@import './colors.scss';
+
 * {
   font-family: 'Roboto', sans-serif;
 }
 
 body {
   padding: 0px 4px;
+  background-color: $COLOR_BG;
+  color: $COLOR_TEXT;
 }
