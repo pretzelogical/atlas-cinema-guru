@@ -25,13 +25,9 @@ Content-Type: application/json
 # Auth
 POST http://localhost:8000/api/auth/
 Accept: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoidGVzdCIsImlhdCI6MTcxOTg2MzI2OCwiZXhwIjoxNzE5OTQ5NjY4fQ.6yoJ17mwfNDZ8hTwc7MNFTVQNBQ3DjI7hdDFY3coMx4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoidGVzdCIsImlhdCI6MTcxOTk1MjgyOSwiZXhwIjoxNzIwMDM5MjI5fQ.-1qUo-8-4oj-oDRUKzmyFgoZ94M2dbQJ8adg-qkCJnU
 Content-Type: application/json
 
-{
-  "username": "test",
-  "password": "123"
-}
 
 ###
 

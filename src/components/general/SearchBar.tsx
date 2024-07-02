@@ -4,7 +4,6 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 
 
-
 export type SearchBarProps = {
   title: string,
   setTitle: (x: string) => void;
