@@ -1,6 +1,6 @@
 import Input from '../../components/general/Input';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faKey, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faKey, faPlus } from '@fortawesome/free-solid-svg-icons';
 import Button from '../../components/general/Button';
 
 
@@ -8,15 +8,17 @@ export type RegisterProps = {
   username: string,
   password: string,
   setUsername: (x: string) => void,
-  setPassword: (x: string) => void
-}
+  setPassword: (x: string) => void,
+  onSubmit: () => void;
+};
 
 
 export default function Register({
   username,
   password,
   setUsername,
-  setPassword
+  setPassword,
+  onSubmit
 }: RegisterProps) {
   return (
     <div className="authInput-container">
@@ -40,8 +42,8 @@ export default function Register({
       <Button
         label='Sign Up'
         icon={<FontAwesomeIcon icon={faPlus} />}
-        onClick={() => {}}
+        onClick={() => onSubmit()}
       />
     </div>
-  )
+  );
 }

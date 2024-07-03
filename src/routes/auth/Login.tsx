@@ -1,6 +1,6 @@
 import Input from '../../components/general/Input';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faKey } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faKey } from '@fortawesome/free-solid-svg-icons';
 import Button from '../../components/general/Button';
 
 
@@ -8,15 +8,17 @@ export type LoginProps = {
   username: string,
   password: string,
   setUsername: (x: string) => void,
-  setPassword: (x: string) => void
-}
+  setPassword: (x: string) => void,
+  onSubmit: () => void;
+};
 
 
 export default function Login({
   username,
   password,
   setUsername,
-  setPassword
+  setPassword,
+  onSubmit
 }: LoginProps) {
 
   return (
@@ -41,8 +43,8 @@ export default function Login({
       <Button
         label='Login'
         icon={<FontAwesomeIcon icon={faKey} />}
-        onClick={() => {}}
+        onClick={() => onSubmit()}
       />
     </div>
-  )
+  );
 }

@@ -2,9 +2,10 @@ import { useState } from "react";
 import './auth.scss';
 import Login from "./Login";
 import Register from "./Register";
+import client from "../../client";
 
 export type AuthenticationProps = {
-  setIsLoggedIn: (x: boolean) => void,
+  setIsLoggedIn: (x: boolean) => void;
   setAppUsername: (x: string) => void;
 };
 
@@ -15,6 +16,22 @@ export default function Authentication({
   const [isLoggingIn, setIsLoggingIn] = useState<boolean>(true);
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+
+  const handleSubmit = () => {
+    const route = isLoggingIn ? '/auth/login' : '/auth/register';
+    client
+      .post(route, { username, password })
+      .then((response) => {
+        if (response.status === 200) {
+          localStorage.setItem('accessToken', response.data.accessToken);
+          setIsLoggedIn(true);
+          setAppUsername(username);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="authentication-container">
@@ -39,12 +56,14 @@ export default function Authentication({
           password={password}
           setUsername={setUsername}
           setPassword={setPassword}
+          onSubmit={handleSubmit}
         />
         : <Register
           username={username}
           password={password}
           setUsername={setUsername}
           setPassword={setPassword}
+          onSubmit={handleSubmit}
         />
       }
     </div>
