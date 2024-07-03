@@ -1,10 +1,12 @@
 import { useState } from "react";
 import './auth.scss';
+import Login from "./Login";
+import Register from "./Register";
 
 export type AuthenticationProps = {
   setIsLoggedIn: (x: boolean) => void,
-  setAppUsername: (x: string) => void
-}
+  setAppUsername: (x: string) => void;
+};
 
 export default function Authentication({
   setIsLoggedIn,
@@ -30,25 +32,40 @@ export default function Authentication({
           Register
         </AuthenticationTab>
       </div>
+
+      {isLoggingIn
+        ? <Login
+          username={username}
+          password={password}
+          setUsername={setUsername}
+          setPassword={setPassword}
+        />
+        : <Register
+          username={username}
+          password={password}
+          setUsername={setUsername}
+          setPassword={setPassword}
+        />
+      }
     </div>
-  )
+  );
 }
 
 
 function AuthenticationTab({
-  onClick = () => {},
+  onClick = () => { },
   isActive = false,
   children = ''
 }) {
   return (
     <div className={
       isActive
-      ? "authentication-tab--active"
-      : "authentication-tab"
+        ? "authentication-tab--active"
+        : "authentication-tab"
     }>
       <button className="authentication-tab-button" onClick={onClick}>
         {children}
       </button>
     </div>
-  )
+  );
 }

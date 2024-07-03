@@ -1,11 +1,12 @@
 @import '../../colors.scss';
 
 .authentication-container {
-  width: 500px;
+  width: min(70vw, 500px);
+  display: fl;
   .authentication-tabs {
     display: flex;
-    align-items: stretch;
-    justify-content: stretch;
+    align-items: center;
+    justify-content: center;
 
     .authentication-tab {
       flex-grow: 2;
@@ -28,5 +29,28 @@
         }
       }
     }
+  }
+}
+
+.authInput-container {
+  padding: 10px 40px;
+  background-color: $COLOR_BG_ALT;
+  display: flex;
+  flex-flow: column;
+  p {
+    text-align: center;
+    font-weight: bold;
+    margin: 20px 0;
+    color: $COLOR_TEXT_ALT;
+  }
+  .input-container, .input-container--black {
+    margin: 20px 0;
+    input {
+      width: 100%;
+    }
+  }
+
+  button {
+    align-self: flex-end;
   }
 }

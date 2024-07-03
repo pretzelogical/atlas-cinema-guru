@@ -8,6 +8,24 @@ p, button, input {
   color: $COLOR_TEXT;
 }
 
+button {
+  border: none;
+  background-color: $COLOR_PRIMARY_FADED;
+  padding: 6px 16px;
+  cursor: pointer;
+  svg {
+    margin-right: 4px;
+    cursor: pointer;
+  }
+  label {
+    cursor: pointer;
+  }
+
+  &:hover {
+    background-color: $COLOR_PRIMARY;
+  }
+}
+
 body {
   padding: 0px 4px;
   background-color: $COLOR_BG;
