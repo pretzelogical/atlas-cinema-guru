@@ -4,6 +4,7 @@ import './App.scss';
 import './UiLibrary';
 import UiLibrary from './UiLibrary';
 import Authentication from './routes/auth/Authentication';
+import Dashboard from './routes/dashboard/Dashboard';
 
 export type AppState = {
   isLoggedIn: boolean;
@@ -13,21 +14,32 @@ export type AppState = {
 function App() {
   const [loading, userData, setUserData] = useUser();
   const [showUiLibrary, setShowUiLibrary] = useState<boolean>(false);
+  const [showAuth, setShowAuth] = useState<boolean>(false);
 
   return (
     <main>
-      <button onClick={() => setShowUiLibrary(!showUiLibrary)}>Show Ui library</button>
-      {showUiLibrary ? <UiLibrary /> : null}
       {/* TODO: If userData.isLoading is true, show a loading screen */}
       {/* If logged in show the dashboard else auth */}
-      <Authentication
+      <Dashboard
+        username={userData.username}
         setIsLoggedIn={
-          (loggedIn) => setUserData({ ...copyUserState(userData), isLoggedIn: loggedIn })
-        }
-        setAppUsername={
-          (username) => setUserData({ ...copyUserState(userData), username })
+          (x: boolean) => setUserData({ ...copyUserState(userData), isLoggedIn: x })
         }
       />
+      <button onClick={() => setShowUiLibrary(!showUiLibrary)}>{showUiLibrary ? 'Hide' : 'Show'} Ui library</button>
+      <button onClick={() => setShowAuth(!showAuth)}>{showAuth ? 'Hide' : 'Show'} Authentication</button>
+      {showUiLibrary ? <UiLibrary /> : null}
+      {showAuth
+        ? <Authentication
+          setIsLoggedIn={
+            (loggedIn) => setUserData({ ...copyUserState(userData), isLoggedIn: loggedIn })
+          }
+          setAppUsername={
+            (username) => setUserData({ ...copyUserState(userData), username })
+          }
+        />
+        : null
+      }
       <p>Loading: {loading.toString()}</p>
       <p>User data: {JSON.stringify(userData, null, 2)}</p>
     </main>

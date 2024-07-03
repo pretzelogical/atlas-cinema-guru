@@ -1,0 +1,33 @@
+@import '../../colors.scss';
+
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px min(40px, 10vw);
+  background-color: hsl(0, 0%, 4%);
+  .header-user {
+    display: flex;
+    align-items: center;
+    .header-user-profile {
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+      img {
+        border-radius: 100%;
+        border: solid 2px $COLOR_PRIMARY;
+        margin-right: 10px;
+      }
+      p {
+        margin: 0;
+      }
+    }
+    button {
+      background: transparent;
+      color: $COLOR_PRIMARY_FADED;
+      width: fit-content;
+      height: fit-content;
+      padding: 0;
+    }
+  }
+}
