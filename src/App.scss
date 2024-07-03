@@ -4,6 +4,10 @@
   font-family: 'Roboto', sans-serif;
 }
 
+p, button, input {
+  color: $COLOR_TEXT;
+}
+
 body {
   padding: 0px 4px;
   background-color: $COLOR_BG;

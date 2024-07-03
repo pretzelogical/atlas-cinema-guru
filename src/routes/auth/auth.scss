@@ -1,0 +1,32 @@
+@import '../../colors.scss';
+
+.authentication-container {
+  width: 500px;
+  .authentication-tabs {
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+
+    .authentication-tab {
+      flex-grow: 2;
+      .authentication-tab-button {
+        width: 100%;
+        height: 100%;
+        padding: 10px 20px;
+        border: none;
+
+        background-color: $COLOR_PRIMARY_FADED;
+        transition: background-color 700ms;
+        cursor: pointer;
+      }
+
+      &--active {
+        @extend .authentication-tab;
+
+        .authentication-tab-button {
+          background-color: $COLOR_PRIMARY;
+        }
+      }
+    }
+  }
+}
