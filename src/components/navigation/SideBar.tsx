@@ -63,7 +63,7 @@ export default function SideBar() {
               {pages.map((page) => (
                 <li key={page}>
                   <Button
-                    label=''
+                    label={page}
                     icon={<FontAwesomeIcon icon={selectIcon(page)} />}
                     onClick={() => setPage(page)}
                     className={selected === page ? 'sidebar-page-selected' : 'sidebar-page'}
