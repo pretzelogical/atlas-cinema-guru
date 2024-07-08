@@ -3,29 +3,23 @@ import './auth.scss';
 import Login from "./Login";
 import Register from "./Register";
 import client from "../../client";
+import useUserState from "../../userState";
 
-export type AuthenticationProps = {
-  setIsLoggedIn: (x: boolean) => void;
-  setAppUsername: (x: string) => void;
-};
-
-export default function Authentication({
-  setIsLoggedIn,
-  setAppUsername
-}: AuthenticationProps) {
+export default function Authentication() {
   const [isLoggingIn, setIsLoggingIn] = useState<boolean>(true);
-  const [username, setUsername] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [usernameInput, setUsernameInput] = useState<string>('');
+  const [passwordInput, setPasswordInput] = useState<string>('');
+  const logIn = useUserState((state) => state.logIn);
+
 
   const handleSubmit = () => {
     const route = isLoggingIn ? '/auth/login' : '/auth/register';
     client
-      .post(route, { username, password })
+      .post(route, { username: usernameInput, password: passwordInput })
       .then((response) => {
         if (response.status === 200) {
           localStorage.setItem('accessToken', response.data.accessToken);
-          setIsLoggedIn(true);
-          setAppUsername(username);
+          logIn(usernameInput);
         }
       })
       .catch((error) => {
@@ -52,17 +46,17 @@ export default function Authentication({
 
       {isLoggingIn
         ? <Login
-          username={username}
-          password={password}
-          setUsername={setUsername}
-          setPassword={setPassword}
+          username={usernameInput}
+          password={passwordInput}
+          setUsername={setUsernameInput}
+          setPassword={setPasswordInput}
           onSubmit={handleSubmit}
         />
         : <Register
-          username={username}
-          password={password}
-          setUsername={setUsername}
-          setPassword={setPassword}
+          username={usernameInput}
+          password={passwordInput}
+          setUsername={setUsernameInput}
+          setPassword={setPasswordInput}
           onSubmit={handleSubmit}
         />
       }

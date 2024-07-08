@@ -2,21 +2,16 @@ import Button from "../general/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import './navigation.scss';
+import useUserState from "../../userState";
 
-export type HeaderProps = {
-  username: string,
-  setIsLoggedIn: (x: boolean) => void
-}
-
-
-export default function Header({
-  username,
-  setIsLoggedIn
-}: HeaderProps) {
+export default function Header() {
+  const username = useUserState((state) => state.username);
+  const logOutUser = useUserState((state) => state.logOut);
   const logOut = () => {
     localStorage.removeItem('accessToken');
-    setIsLoggedIn(false);
+    logOutUser();
   }
+
   return (
     <div className="header-container">
       <p>Cinema Guru</p>
