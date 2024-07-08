@@ -31,3 +31,66 @@
     }
   }
 }
+
+.sidebar-container, .sidebar-container-small {
+  position: fixed;
+  background-color: $COLOR_PRIMARY_FADED;
+  .sidebar-nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      button {
+        display: flex;
+        text-align: start;
+        &.button--sidebar-page-selected {
+          background-color: $COLOR_PRIMARY;
+        }
+      }
+    }
+  }
+
+  .sidebar-activities {
+    display: flex;
+    flex-flow: column;
+    padding: 0px 8px;
+    background-color: $COLOR_BG_FADED;
+    .sidebar-activities-header {
+      margin-bottom: 8px;
+      font-weight: bold;
+      text-decoration: underline;
+      font-size: larger;
+    }
+  }
+}
+
+.sidebar-container {
+  width: min(250px, 20vw);
+  .sidebar-nav {
+    margin: 10px 0px;
+    ul li button {
+      align-items: start;
+      width: 100%;
+      svg {
+        margin: 0px 10px 0px 0px;
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  &-small {
+    width: 32px;
+    .sidebar-nav {
+      ul li button {
+        width: 100%;
+        padding: 8px 0px;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+}

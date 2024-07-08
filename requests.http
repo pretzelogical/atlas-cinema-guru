@@ -35,4 +35,10 @@ Content-Type: application/json
 GET http://localhost:8000/api/titles/advancedsearch?sort=oldest&maxYear=2022
 Accept: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoidGVzdCIsImlhdCI6MTcxOTg2MzI2OCwiZXhwIjoxNzE5OTQ5NjY4fQ.6yoJ17mwfNDZ8hTwc7MNFTVQNBQ3DjI7hdDFY3coMx4
-# Content-Type: application/json
+
+###
+
+# Activites
+GET http://localhost:8000/api/activity
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoidGVzdCIsImlhdCI6MTcyMDQ2MDAwMywiZXhwIjoxNzIwNTQ2NDAzfQ.TVD6sE8vsGEAlvzZwxDU7NkaR03j0VxZ-LiTXnHnh4A

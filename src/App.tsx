@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import client from './client';
 import './App.scss';
 import './UiLibrary';
 import UiLibrary from './UiLibrary';
 import Authentication from './routes/auth/Authentication';
 import Dashboard from './routes/dashboard/Dashboard';
-import useUserState, { UserState } from './userState';
+import useUserState from './userState';
 
 export type AppState = {
   isLoggedIn: boolean;
