@@ -21,11 +21,11 @@ function App() {
   const [ isLoading ] = useLoadUserFromServer();
 
   return (
-    <main>
+    <>
       {/* TODO: If userData.isLoading is true, show a loading screen */}
       {/* If logged in show the dashboard else auth */}
       <Dashboard />
-      <button onClick={() => setShowUiLibrary(!showUiLibrary)}>{showUiLibrary ? 'Hide' : 'Show'} Ui library</button>
+      {/* <button onClick={() => setShowUiLibrary(!showUiLibrary)}>{showUiLibrary ? 'Hide' : 'Show'} Ui library</button>
       <button onClick={() => setShowAuth(!showAuth)}>{showAuth ? 'Hide' : 'Show'} Authentication</button>
       {showUiLibrary ? <UiLibrary /> : null}
       {showAuth
@@ -34,8 +34,8 @@ function App() {
       }
       <p>Zustand username: {username}</p>
       <p>isLoading: {isLoading.toString()}</p>
-      <p>isLoggedIn: {isLoggedIn.toString()}</p>
-    </main>
+      <p>isLoggedIn: {isLoggedIn.toString()}</p> */}
+    </>
   );
 }
 

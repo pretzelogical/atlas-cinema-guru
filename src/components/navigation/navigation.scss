@@ -6,22 +6,27 @@
   justify-content: space-between;
   padding: 0px min(40px, 10vw);
   background-color: hsl(0, 0%, 4%);
+
   .header-user {
     display: flex;
     align-items: center;
+
     .header-user-profile {
       display: flex;
       align-items: center;
       margin-right: 10px;
+
       img {
         border-radius: 100%;
         border: solid 2px $COLOR_PRIMARY;
         margin-right: 10px;
       }
+
       p {
         margin: 0;
       }
     }
+
     button {
       background: transparent;
       color: $COLOR_PRIMARY_FADED;
@@ -32,22 +37,37 @@
   }
 }
 
-.sidebar-container, .sidebar-container-small {
+.sidebar-container,
+.sidebar-container-small {
+  padding: 10px 0px;
   position: fixed;
   background-color: $COLOR_PRIMARY_FADED;
-  .sidebar-nav ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    li {
+  height: 100vh;
+
+  .sidebar-nav {
+    margin-bottom: 10px;
+    ul {
       margin: 0;
       padding: 0;
       list-style: none;
-      button {
-        display: flex;
-        text-align: start;
-        &.button--sidebar-page-selected {
-          background-color: $COLOR_PRIMARY;
+
+      li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        button {
+          display: flex;
+          text-align: start;
+
+          svg {
+            width: 20px;
+            height: 20px;
+          }
+
+          &.button--sidebar-page-selected {
+            background-color: $COLOR_PRIMARY;
+          }
         }
       }
     }
@@ -57,37 +77,52 @@
     display: flex;
     flex-flow: column;
     padding: 0px 8px;
+    margin: 4px;
+    height: fit-content;
     background-color: $COLOR_BG_FADED;
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-flow: column;
+      li {
+        margin: 8px 0px;
+        p {
+          margin: 0;
+        }
+      }
+    }
+
     .sidebar-activities-header {
-      margin-bottom: 8px;
       font-weight: bold;
       text-decoration: underline;
-      font-size: larger;
+      font-size: 20px;
+      margin: 16px 0px;
     }
   }
 }
 
 .sidebar-container {
   width: min(250px, 20vw);
+
   .sidebar-nav {
-    margin: 10px 0px;
     ul li button {
       align-items: start;
       width: 100%;
+
       svg {
         margin: 0px 10px 0px 0px;
-        width: 20px;
-        height: 20px;
       }
     }
   }
 
   &-small {
     width: 32px;
+
     .sidebar-nav {
       ul li button {
         width: 100%;
-        padding: 8px 0px;
         align-items: center;
         justify-content: center;
       }

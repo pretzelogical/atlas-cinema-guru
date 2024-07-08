@@ -9,7 +9,7 @@ import './navigation.scss';
 export default function SideBar() {
   const pages = ['Home', 'Favorites', 'Watch later'];
   const [selected, setSelected] = useState<string>(pages[0]);
-  const [isSmall, setIsSmall] = useState<boolean>(false);
+  const [isSmall, setIsSmall] = useState<boolean>(true);
   const [activities, setActivities] = useState<Array<unknown>>([]);
   const [showActivies, setShowActivites] = useState<boolean>(false);
   const [isLoading] = useGetActivitesFromServer(setActivities);
@@ -39,8 +39,8 @@ export default function SideBar() {
         ? "sidebar-container-small"
         : "sidebar-container"
     }
-      // onMouseEnter={() => setIsSmall(false)}
-      // onMouseLeave={() => setIsSmall(true)}
+      onMouseEnter={() => setIsSmall(false)}
+      onMouseLeave={() => setIsSmall(true)}
     >
       {
         isSmall
@@ -74,13 +74,35 @@ export default function SideBar() {
           </div>
             <div className="sidebar-activities">
               <p className="sidebar-activities-header">Latest Activities</p>
-              <Activity
-                username="John Doe"
-                activity="added"
-                title="The Matrix"
-                destination="watch later"
-                date="March 28, 2024"
-              />
+              <ul>
+                <li>
+                  <Activity
+                    username="John Doe"
+                    activity="added"
+                    title="The Matrix"
+                    destination="watch later"
+                    date="March 28, 2024"
+                  />
+                </li>
+                <li>
+                  <Activity
+                    username="John Doe"
+                    activity="added"
+                    title="The Matrix"
+                    destination="watch later"
+                    date="March 28, 2024"
+                  />
+                </li>
+                <li>
+                  <Activity
+                    username="John Doe"
+                    activity="added"
+                    title="The Matrix"
+                    destination="watch later"
+                    date="March 28, 2024"
+                  />
+                </li>
+              </ul>
             </div></>
       }
 
