@@ -1,4 +1,6 @@
 import { create } from 'zustand';
+import { useEffect, useState } from 'react';
+import client from './client';
 
 export type UserState = {
   username: string,
@@ -17,5 +19,41 @@ const useUserState = create<UserState>()((set) => ({
   logIn: (username: string) => set({ username, isLoggedIn: true }),
   logOut: () => set({ username: '', isLoggedIn: false }),
 } as UserState));
+
+export const useLoadUserFromServer = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const setUserName = useUserState((state) => state.setUsername);
+  const setIsLoggedIn = useUserState((state) => state.setIsLoggedIn);
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken) {
+      setIsLoading(true);
+      client
+        .post('/auth', {},
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            }
+          }
+        )
+        .then((response): void => {
+          console.log(response.status, response.data);
+          setUserName(response.data.username);
+          setIsLoggedIn(true);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+          // localStorage.removeItem('accessToken');
+          setUserName('');
+          setIsLoggedIn(false);
+          setIsLoading(false);
+        });
+    }
+  }, [setUserName, setIsLoggedIn]);
+
+  return [isLoading] as [boolean];
+}
 
 export default useUserState;

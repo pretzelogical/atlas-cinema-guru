@@ -1,9 +1,12 @@
 import Header from "../../components/navigation/Header";
 import SideBar from "../../components/navigation/SideBar";
 import './dashboard.scss';
+import { useLoadUserFromServer } from "../../userState";
 
 
 export default function Dashboard() {
+  const [isLoading] = useLoadUserFromServer();
+
   return (
     <div className="dashboard-container">
       <Header />

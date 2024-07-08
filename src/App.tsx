@@ -5,7 +5,7 @@ import './UiLibrary';
 import UiLibrary from './UiLibrary';
 import Authentication from './routes/auth/Authentication';
 import Dashboard from './routes/dashboard/Dashboard';
-import useUserState from './userState';
+import useUserState, { useLoadUserFromServer } from './userState';
 
 export type AppState = {
   isLoggedIn: boolean;
@@ -18,7 +18,6 @@ function App() {
   const [showAuth, setShowAuth] = useState<boolean>(false);
   const username = useUserState((state) => state.username);
   const isLoggedIn = useUserState((state) => state.isLoggedIn);
-  const [ isLoading ] = useLoadUserFromServer();
 
   return (
     <>
@@ -37,42 +36,6 @@ function App() {
       <p>isLoggedIn: {isLoggedIn.toString()}</p> */}
     </>
   );
-}
-
-const useLoadUserFromServer = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const setUserName = useUserState((state) => state.setUsername);
-  const setIsLoggedIn = useUserState((state) => state.setIsLoggedIn);
-
-  useEffect(() => {
-    const accessToken = localStorage.getItem('accessToken');
-    if (accessToken) {
-      setIsLoading(true);
-      client
-        .post('/auth', {},
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            }
-          }
-        )
-        .then((response): void => {
-          console.log(response.status, response.data);
-          setUserName(response.data.username);
-          setIsLoggedIn(true);
-          setIsLoading(false);
-        })
-        .catch((error) => {
-          console.log(error);
-          // localStorage.removeItem('accessToken');
-          setUserName('');
-          setIsLoggedIn(false);
-          setIsLoading(false);
-        });
-    }
-  }, [setUserName, setIsLoggedIn]);
-
-  return [isLoading] as [boolean];
 }
 
 export default App;
