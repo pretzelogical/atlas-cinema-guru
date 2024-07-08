@@ -14,6 +14,7 @@ export default function Dashboard() {
       <div className="dashboard-content">
         <h1>Test Content</h1>
         <p>ijfaeifaeiofaiofhawiohf</p>
+        <p>{isLoading ? 'Loading...' : 'Loaded'}</p>
       </div>
     </div>
   )

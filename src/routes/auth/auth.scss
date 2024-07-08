@@ -1,30 +1,34 @@
 @import '../../colors.scss';
 
 .authentication-container {
-  width: min(70vw, 500px);
-  .authentication-tabs {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .authentication-tab {
-      flex-grow: 2;
-      .authentication-tab-button {
-        width: 100%;
-        height: 100%;
-        padding: 10px 20px;
-        border: none;
-
-        background-color: $COLOR_PRIMARY_FADED;
-        transition: background-color 700ms;
-        cursor: pointer;
-      }
-
-      &--active {
-        @extend .authentication-tab;
-
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .authentication-content{
+    width: min(70vw, 500px);
+    .authentication-tabs {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .authentication-tab {
+        flex-grow: 2;
         .authentication-tab-button {
-          background-color: $COLOR_PRIMARY;
+          width: 100%;
+          height: 100%;
+          padding: 10px 20px;
+          border: none;
+          background-color: $COLOR_PRIMARY_FADED;
+          transition: background-color 700ms;
+          cursor: pointer;
+        }
+
+        &--active {
+          @extend .authentication-tab;
+          .authentication-tab-button {
+            background-color: $COLOR_PRIMARY;
+          }
         }
       }
     }

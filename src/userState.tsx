@@ -22,8 +22,8 @@ const useUserState = create<UserState>()((set) => ({
 
 export const useLoadUserFromServer = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const setUserName = useUserState((state) => state.setUsername);
-  const setIsLoggedIn = useUserState((state) => state.setIsLoggedIn);
+  const logIn = useUserState((state) => state.logIn);
+  const logOut = useUserState((state) => state.logOut);
 
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken');
@@ -38,20 +38,17 @@ export const useLoadUserFromServer = () => {
           }
         )
         .then((response): void => {
-          console.log(response.status, response.data);
-          setUserName(response.data.username);
-          setIsLoggedIn(true);
+          logIn(response.data.username);
           setIsLoading(false);
         })
         .catch((error) => {
           console.log(error);
           // localStorage.removeItem('accessToken');
-          setUserName('');
-          setIsLoggedIn(false);
+          logOut();
           setIsLoading(false);
         });
     }
-  }, [setUserName, setIsLoggedIn]);
+  }, [logIn, logOut]);
 
   return [isLoading] as [boolean];
 }

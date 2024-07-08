@@ -119,7 +119,11 @@ const useGetActivitesFromServer = (setActivities: (activities: Array<unknown>) =
       return;
     }
     client
-      .get('/api/activity')
+      .get('/activity', {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        }
+      })
       .then((response) => {
         setActivities(response.data);
         setIsLoading(false);

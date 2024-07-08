@@ -11,7 +11,8 @@ const router = createBrowserRouter([
   {
     path: "/auth",
     element: <Authentication />,
-  }
+  },
+  // Paths for home, favorites, and watch later will be added here
 ]);
 
 export default router;

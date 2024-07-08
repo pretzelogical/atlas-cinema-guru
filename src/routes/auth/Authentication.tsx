@@ -4,11 +4,13 @@ import Login from "./Login";
 import Register from "./Register";
 import client from "../../client";
 import useUserState from "../../userState";
+import { useNavigate } from "react-router-dom";
 
 export default function Authentication() {
   const [isLoggingIn, setIsLoggingIn] = useState<boolean>(true);
   const [usernameInput, setUsernameInput] = useState<string>('');
   const [passwordInput, setPasswordInput] = useState<string>('');
+  const navigate = useNavigate();
   const logIn = useUserState((state) => state.logIn);
 
 
@@ -20,6 +22,7 @@ export default function Authentication() {
         if (response.status === 200) {
           localStorage.setItem('accessToken', response.data.accessToken);
           logIn(usernameInput);
+          navigate('/');
         }
       })
       .catch((error) => {
@@ -29,6 +32,7 @@ export default function Authentication() {
 
   return (
     <div className="authentication-container">
+      <div className="authentication-content">
       <div className="authentication-tabs">
         <AuthenticationTab
           isActive={isLoggingIn}
@@ -60,6 +64,7 @@ export default function Authentication() {
           onSubmit={handleSubmit}
         />
       }
+      </div>
     </div>
   );
 }
