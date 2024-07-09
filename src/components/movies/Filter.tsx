@@ -42,13 +42,13 @@ export default function Filter({
         <div className="filter-select">
           <Input
             label="Min Date:"
-            type="year"
+            type="number"
             value={minYear}
             setValue={(value) => setMinYear(value as number)}
           />
           <Input
             label="Max. Date:"
-            type="year"
+            type="number"
             value={maxYear}
             setValue={(value) => setMaxYear(value as number)}
           />

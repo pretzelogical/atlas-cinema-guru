@@ -6,13 +6,24 @@ import { faFile, faStar, faClock } from "@fortawesome/free-solid-svg-icons";
 import Activity from '../Activity';
 import './navigation.scss';
 
+export type ActivitiesState = {
+  id: number,
+  activityType: string,
+  createdAt: string,
+  title: { title: string },
+  updatedAt: Date,
+  user: { username: string },
+  userId: number
+}
+
 export default function SideBar() {
   const pages = ['Home', 'Favorites', 'Watch later'];
   const [selected, setSelected] = useState<string>(pages[0]);
   const [isSmall, setIsSmall] = useState<boolean>(true);
-  const [activities, setActivities] = useState<Array<unknown>>([]);
-  const [showActivies, setShowActivites] = useState<boolean>(false);
+  const [activities, setActivities] = useState<Array<ActivitiesState>>([]);
   const [isLoading] = useGetActivitesFromServer(setActivities);
+
+  console.log(activities);
 
   const setPage = (pageName: string) => {
     if (pages.includes(pageName)) {
@@ -75,33 +86,7 @@ export default function SideBar() {
             <div className="sidebar-activities">
               <p className="sidebar-activities-header">Latest Activities</p>
               <ul>
-                <li>
-                  <Activity
-                    username="John Doe"
-                    activity="added"
-                    title="The Matrix"
-                    destination="watch later"
-                    date="March 28, 2024"
-                  />
-                </li>
-                <li>
-                  <Activity
-                    username="John Doe"
-                    activity="added"
-                    title="The Matrix"
-                    destination="watch later"
-                    date="March 28, 2024"
-                  />
-                </li>
-                <li>
-                  <Activity
-                    username="John Doe"
-                    activity="added"
-                    title="The Matrix"
-                    destination="watch later"
-                    date="March 28, 2024"
-                  />
-                </li>
+                {generateActivities(activities)}
               </ul>
             </div></>
       }
@@ -109,6 +94,19 @@ export default function SideBar() {
     </div>
   );
 }
+
+const generateActivities = (activities: Array<ActivitiesState>) => {
+  return activities.map((activity) => (
+    <li key={activity.id}>
+      <Activity
+        activityType={activity.activityType}
+        username={activity.user.username}
+        date={new Date(activity.createdAt)}
+        title={activity.title.title}
+      />
+    </li>
+  ));
+};
 
 
 const useGetActivitesFromServer = (setActivities: (activities: Array<unknown>) => void) => {

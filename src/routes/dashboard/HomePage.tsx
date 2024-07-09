@@ -1,4 +1,3 @@
-import Tag from "../../components/movies/Tag";
 import MovieCard from "../../components/movies/MovieCard";
 import Filter from "../../components/movies/Filter";
 import { useCallback, useEffect, useState } from "react";
