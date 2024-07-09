@@ -50,3 +50,26 @@
     }
   }
 }
+
+.watchlater-container {
+  .watchlater-title {
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: $COLOR_PRIMARY;
+    font-weight: normal;
+    font-size: 50px;
+  }
+
+  .watchlater-movies {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    li {
+      margin: 5px 10px;
+      flex-grow: 1;
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

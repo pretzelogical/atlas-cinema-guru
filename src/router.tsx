@@ -3,6 +3,7 @@ import Dashboard from "./routes/dashboard/Dashboard";
 import Authentication from './routes/auth/Authentication';
 import HomePage from "./routes/dashboard/HomePage";
 import Favorites from "./routes/dashboard/Favorites";
+import WatchLater from "./routes/dashboard/WatchLater";
 
 
 const router = createBrowserRouter([
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/favorites",
     element: <Dashboard activePage="Favorites"><Favorites /></Dashboard>
+  },
+  {
+    path: '/watchlater',
+    element: <Dashboard activePage="Watch later"><WatchLater /></Dashboard>
   },
   {
     path: "/auth",

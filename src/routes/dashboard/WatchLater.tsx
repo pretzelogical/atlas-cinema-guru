@@ -4,16 +4,16 @@ import client from '../../client';
 import MovieCard from '../../components/movies/MovieCard';
 
 
-export default function Favorites() {
+export default function WatchLater() {
   const [movies, setMovies] = useState<Array<MovieType>>([]);
 
-  const getFavoriteMovies = () => {
+  const getWatchLaterMovies = () => {
     const accessToken = localStorage.getItem('accessToken');
     if (!accessToken) {
       return;
     }
     client
-      .get('titles/favorite', {
+      .get('titles/watchlater', {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         }
@@ -26,12 +26,12 @@ export default function Favorites() {
       });
   };
   useEffect(() => {
-    getFavoriteMovies();
+    getWatchLaterMovies();
   }, []);
   return (
-    <div className="favorites-container">
-      <h1 className="favorites-title">Movies you like</h1>
-      <ul className="favorites-movies">
+    <div className="watchlater-container">
+      <h1 className="watchlater-title">Movies to Watch Later</h1>
+      <ul className="watchlater-movies">
         {movies.map((movie) => (
           <li key={movie.id}>
             <MovieCard
