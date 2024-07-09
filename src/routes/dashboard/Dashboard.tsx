@@ -4,16 +4,22 @@ import './dashboard.scss';
 import { useLoadUserFromServer } from "../../userState";
 
 export type DashboardProps = {
-  children?: React.ReactNode
+  children?: React.ReactNode,
+  activePage?: string
 };
 
-export default function Dashboard({ children }: DashboardProps) {
+export default function Dashboard({
+  children,
+  activePage
+}: DashboardProps) {
   const [isLoading] = useLoadUserFromServer();
 
   return (
     <div className="dashboard-container">
       <Header />
-      <SideBar />
+      <SideBar
+        activePage={activePage || 'Home'}
+      />
       <div className="dashboard-content">
         {children ? children : <p>Dashboard needs a child</p>}
         <p>{isLoading ? 'Loading...' : 'Loaded'}</p>

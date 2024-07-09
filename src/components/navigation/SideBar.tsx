@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFile, faStar, faClock } from "@fortawesome/free-solid-svg-icons";
 import Activity from '../Activity';
 import './navigation.scss';
+import { useNavigate } from "react-router-dom";
 
 export type ActivitiesState = {
   id: number,
@@ -16,18 +17,29 @@ export type ActivitiesState = {
   userId: number
 }
 
-export default function SideBar() {
-  const pages = ['Home', 'Favorites', 'Watch later'];
-  const [selected, setSelected] = useState<string>(pages[0]);
+export type SideBarProps = {
+  activePage: string
+}
+
+export default function SideBar({ activePage }: SideBarProps) {
+  const pagesRoutes = {
+    'Home': '/home',
+    'Favorites': '/favorites',
+    'Watch later': '/watchlater'
+  };
   const [isSmall, setIsSmall] = useState<boolean>(true);
   const [activities, setActivities] = useState<Array<ActivitiesState>>([]);
   const [isLoading] = useGetActivitesFromServer(setActivities);
+  const navigate = useNavigate();
 
-  const setPage = (pageName: string) => {
-    if (pages.includes(pageName)) {
-      setSelected(pageName);
-    }
-  };
+  let pageSelected = 'Home';
+
+  if (Object.keys(pagesRoutes).includes(activePage)) {
+    pageSelected = activePage;
+  } else {
+    console.log('Invalid page given to SideBar');
+  }
+
 
   const selectIcon = (pageName: string) => {
     switch (pageName) {
@@ -55,13 +67,13 @@ export default function SideBar() {
         isSmall
           ? <div className="sidebar-nav">
             <ul>
-              {pages.map((page) => (
+              {Object.entries(pagesRoutes).map(([page, route]) => (
                 <li key={page}>
                   <Button
                     label=''
                     icon={<FontAwesomeIcon icon={selectIcon(page)} />}
-                    onClick={() => setPage(page)}
-                    className={selected === page ? 'sidebar-page-selected' : 'sidebar-page'}
+                    onClick={() => navigate(route)}
+                    className={pageSelected === page ? 'sidebar-page-selected' : 'sidebar-page'}
                   />
                 </li>
               ))}
@@ -69,13 +81,13 @@ export default function SideBar() {
           </div>
           : <><div className="sidebar-nav">
             <ul>
-              {pages.map((page) => (
+              {Object.entries(pagesRoutes).map(([page, route]) => (
                 <li key={page}>
                   <Button
                     label={page}
                     icon={<FontAwesomeIcon icon={selectIcon(page)} />}
-                    onClick={() => setPage(page)}
-                    className={selected === page ? 'sidebar-page-selected' : 'sidebar-page'}
+                    onClick={() => navigate(route)}
+                    className={pageSelected === page ? 'sidebar-page-selected' : 'sidebar-page'}
                   />
                 </li>
               ))}
@@ -107,7 +119,7 @@ const generateActivities = (activities: Array<ActivitiesState>) => {
 };
 
 
-const useGetActivitesFromServer = (setActivities: (activities: Array<unknown>) => void) => {
+const useGetActivitesFromServer = (setActivities: React.Dispatch<React.SetStateAction<ActivitiesState[]>>) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken');
