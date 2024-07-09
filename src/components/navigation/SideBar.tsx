@@ -23,8 +23,6 @@ export default function SideBar() {
   const [activities, setActivities] = useState<Array<ActivitiesState>>([]);
   const [isLoading] = useGetActivitesFromServer(setActivities);
 
-  console.log(activities);
-
   const setPage = (pageName: string) => {
     if (pages.includes(pageName)) {
       setSelected(pageName);

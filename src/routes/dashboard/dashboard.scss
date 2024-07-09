@@ -1,3 +1,6 @@
+@import '../../colors.scss';
+
+
 .dashboard-container {
   .dashboard-content {
     padding: 0px 50px;
@@ -11,6 +14,30 @@
 
   .homepage-movies {
     margin: 0px 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    li {
+      margin: 5px 10px;
+      flex-grow: 1;
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+
+.favorites-container {
+  .favorites-title {
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: $COLOR_PRIMARY;
+    font-weight: normal;
+    font-size: 50px;
+  }
+
+  .favorites-movies {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
