@@ -4,12 +4,13 @@ import Authentication from './routes/auth/Authentication';
 import HomePage from "./routes/dashboard/HomePage";
 import Favorites from "./routes/dashboard/Favorites";
 import WatchLater from "./routes/dashboard/WatchLater";
+import NotFound from "./routes/error/NotFound";
 
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Dashboard />,
+    path: "*",
+    element: <NotFound />
   },
   {
     path: "/home",

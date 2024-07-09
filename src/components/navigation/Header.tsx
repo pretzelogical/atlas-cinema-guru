@@ -3,13 +3,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import './navigation.scss';
 import useUserState from "../../userState";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const username = useUserState((state) => state.username);
   const logOutUser = useUserState((state) => state.logOut);
+  const navigate = useNavigate();
   const logOut = () => {
     localStorage.removeItem('accessToken');
     logOutUser();
+    navigate('/auth');
   }
 
   return (

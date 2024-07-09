@@ -22,7 +22,7 @@ export default function Authentication() {
         if (response.status === 200) {
           localStorage.setItem('accessToken', response.data.accessToken);
           logIn(usernameInput);
-          navigate('/');
+          navigate('/home');
         }
       })
       .catch((error) => {
