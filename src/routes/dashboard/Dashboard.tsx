@@ -15,7 +15,7 @@ export default function Dashboard({ children }: DashboardProps) {
       <Header />
       <SideBar />
       <div className="dashboard-content">
-        {children ? children : <p>BRO Dashboard needs a child</p>}
+        {children ? children : <p>Dashboard needs a child</p>}
         <p>{isLoading ? 'Loading...' : 'Loaded'}</p>
       </div>
     </div>

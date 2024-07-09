@@ -34,7 +34,7 @@ Content-Type: application/json
 # Advanced Search
 GET http://localhost:8000/api/titles/advancedsearch?sort=oldest&maxYear=2022
 Accept: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoidGVzdCIsImlhdCI6MTcyMDU0NDE5NSwiZXhwIjoxNzIwNjMwNTk1fQ.ppgmGNIIhT36xF88uLDAue-395MrDhCf312sooslIV4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoidGVzdCIsImlhdCI6MTcyMDU1MDQyMSwiZXhwIjoxNzIwNjM2ODIxfQ.oYvUbphAHksE0kbtivuEi8JWY1HVFrgkC4WlM93fDus
 
 ###
 
