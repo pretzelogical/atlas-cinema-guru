@@ -21,7 +21,7 @@ export default function MovieCard({
   imgURL,
   tags,
   description,
-  imdbId,
+  imdbId
 }: MovieCardProps) {
   const {
     isFavorite,
@@ -94,58 +94,56 @@ export default function MovieCard({
     }
   };
   return (
-    <li>
-      <div className="movie-card-container">
-        <div className="movie-card-image"
-          style={{
-            backgroundImage: `url(${imgURL})`
-          }}>
-          <div className="movie-card-actions">
-            <Button
-              label=""
-              onClick={() => handleClick('watchLater')}
-              icon={
-                <FontAwesomeIcon
-                  icon={
-                    isWatchLater
-                      ? faClock
-                      : faClockOutline
-                  }
-                  />
+    <div className="movie-card-container">
+      <div className="movie-card-image"
+        style={{
+          backgroundImage: `url(${imgURL})`
+        }}>
+        <div className="movie-card-actions">
+          <Button
+            label=""
+            onClick={() => handleClick('watchLater')}
+            icon={
+              <FontAwesomeIcon
+                icon={
+                  isWatchLater
+                    ? faClock
+                    : faClockOutline
                 }
-              className='movie-card-icon'
-            />
-            <Button
-              label=""
-              onClick={() => handleClick('favorite')}
-              icon={
-                <FontAwesomeIcon
-                  icon={
-                    isFavorite
-                      ? faStar
-                      : faStarOutline
-                  }
-                  />
+              />
+            }
+            className='movie-card-icon'
+          />
+          <Button
+            label=""
+            onClick={() => handleClick('favorite')}
+            icon={
+              <FontAwesomeIcon
+                icon={
+                  isFavorite
+                    ? faStar
+                    : faStarOutline
                 }
-              className='movie-card-icon'
-            />
-          </div>
-          <p className="movie-card-title">{title}</p>
+              />
+            }
+            className='movie-card-icon'
+          />
         </div>
-        <div className="movie-card-description">
-          <p>{description}</p>
-        </div>
-        <div className="movie-card-tags">
-          {tags.map((tag) => (
-            <Tag
-              key={tag}
-              label={tag}
-              isActive={true}
-            />
-          ))}
-        </div>
+        <p className="movie-card-title">{title}</p>
       </div>
-    </li>
+      <div className="movie-card-description">
+        <p>{description}</p>
+      </div>
+      <div className="movie-card-tags">
+        {tags.map((tag) => (
+          <Tag
+            key={tag}
+            label={tag}
+            isActive={true}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
 

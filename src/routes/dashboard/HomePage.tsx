@@ -42,12 +42,10 @@ export default function HomePage() {
       }
     }
     genreString = genreString.slice(0, -1).toLowerCase();
-    console.log(genreString);
     const routeParams = (
       `page=${page}&minYear=${minYear}&maxYear=${maxYear}` +
       `&sort=${sort}&title=${title}&genre=${genreString}`
     );
-    console.log(routeParams);
     client
       .get(`/titles/advancedsearch?${routeParams}`, {
         headers: {
@@ -84,13 +82,15 @@ export default function HomePage() {
       </div>
       <ul className="homepage-movies">
         {movies.map((movie: unknown) => (
-          <MovieCard
-            title={(movie as { title: string; }).title}
-            description={(movie as { synopsis: string; }).synopsis}
-            imgURL={(movie as { imageurls: string[]; }).imageurls[0]}
-            tags={(movie as { genres: Array<string>; }).genres}
-            imdbId={(movie as { imdbId: string; }).imdbId}
-          />
+          <li key={(movie as { imdbId: string; }).imdbId}>
+            <MovieCard
+              title={(movie as { title: string; }).title}
+              description={(movie as { synopsis: string; }).synopsis}
+              imgURL={(movie as { imageurls: string[]; }).imageurls[0]}
+              tags={(movie as { genres: Array<string>; }).genres}
+              imdbId={(movie as { imdbId: string; }).imdbId}
+            />
+          </li>
         ))}
       </ul>
       <div className="homepage-pagination">
