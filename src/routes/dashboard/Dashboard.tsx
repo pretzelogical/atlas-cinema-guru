@@ -3,8 +3,11 @@ import SideBar from "../../components/navigation/SideBar";
 import './dashboard.scss';
 import { useLoadUserFromServer } from "../../userState";
 
+export type DashboardProps = {
+  children?: React.ReactNode
+};
 
-export default function Dashboard() {
+export default function Dashboard({ children }: DashboardProps) {
   const [isLoading] = useLoadUserFromServer();
 
   return (
@@ -12,8 +15,7 @@ export default function Dashboard() {
       <Header />
       <SideBar />
       <div className="dashboard-content">
-        <h1>Test Content</h1>
-        <p>ijfaeifaeiofaiofhawiohf</p>
+        {children ? children : <p>BRO Dashboard needs a child</p>}
         <p>{isLoading ? 'Loading...' : 'Loaded'}</p>
       </div>
     </div>
