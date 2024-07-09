@@ -34,7 +34,7 @@ Content-Type: application/json
 # Advanced Search
 GET http://localhost:8000/api/titles/advancedsearch?sort=oldest&maxYear=2022
 Accept: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoidGVzdCIsImlhdCI6MTcxOTg2MzI2OCwiZXhwIjoxNzE5OTQ5NjY4fQ.6yoJ17mwfNDZ8hTwc7MNFTVQNBQ3DjI7hdDFY3coMx4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoidGVzdCIsImlhdCI6MTcyMDU0NDE5NSwiZXhwIjoxNzIwNjMwNTk1fQ.ppgmGNIIhT36xF88uLDAue-395MrDhCf312sooslIV4
 
 ###
 
@@ -42,3 +42,32 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZ
 GET http://localhost:8000/api/activity
 Accept: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoidGVzdCIsImlhdCI6MTcyMDQ2MDAwMywiZXhwIjoxNzIwNTQ2NDAzfQ.TVD6sE8vsGEAlvzZwxDU7NkaR03j0VxZ-LiTXnHnh4A
+
+###
+
+# Add favorite
+POST http://localhost:8000/api/titles/favorite/tt9899344
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoidGVzdCIsImlhdCI6MTcyMDU0NDI5MiwiZXhwIjoxNzIwNjMwNjkyfQ._6KKs3ccyHHvOY3_LnXNPXBsoSsQbIEgnrNZySaYXBk
+
+###
+
+# Get favorite
+GET http://localhost:8000/api/titles/favorite
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoidGVzdCIsImlhdCI6MTcyMDU0NDI5MiwiZXhwIjoxNzIwNjMwNjkyfQ._6KKs3ccyHHvOY3_LnXNPXBsoSsQbIEgnrNZySaYXBk
+
+###
+
+# Add watch later
+POST http://localhost:8000/api/titles/watchlater/tt9899344
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoidGVzdCIsImlhdCI6MTcyMDU0NDI5MiwiZXhwIjoxNzIwNjMwNjkyfQ._6KKs3ccyHHvOY3_LnXNPXBsoSsQbIEgnrNZySaYXBk
+
+###
+
+# Get watch later
+GET http://localhost:8000/api/titles/watchlater
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoidGVzdCIsImlhdCI6MTcyMDU0NDI5MiwiZXhwIjoxNzIwNjMwNjkyfQ._6KKs3ccyHHvOY3_LnXNPXBsoSsQbIEgnrNZySaYXBk
+

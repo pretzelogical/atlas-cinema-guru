@@ -4,7 +4,7 @@ import Button from '../general/Button';
 export type TagProps = {
   label: string,
   isActive: boolean
-  onClick: () => void
+  onClick?: () => void
 };
 
 export default function Tag({
@@ -20,7 +20,7 @@ export default function Tag({
     }>
       <Button
         label={label}
-        onClick={onClick}
+        onClick={onClick || (() => {})}
       />
     </div>
   )
