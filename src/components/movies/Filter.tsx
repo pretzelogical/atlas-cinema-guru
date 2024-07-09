@@ -6,11 +6,11 @@ import SearchBar from "../general/SearchBar";
 
 export type FilterProps = {
   minYear: number,
-  setMinYear: (year: number | unknown) => void,
+  setMinYear: (year: number) => void,
   maxYear: number,
-  setMaxYear: (year: number | unknown) => void,
+  setMaxYear: (year: number) => void,
   sort: string,
-  setSort: (sort: string | unknown) => void;
+  setSort: (sort: string) => void;
   genres: { [key: string]: boolean },
   setGenres: (genres: { [key: string]: boolean }) => void,
   title: string,
@@ -44,19 +44,19 @@ export default function Filter({
             label="Min Date:"
             type="year"
             value={minYear}
-            setValue={setMinYear}
+            setValue={(value) => setMinYear(value as number)}
           />
           <Input
             label="Max. Date:"
             type="year"
             value={maxYear}
-            setValue={setMaxYear}
+            setValue={(value) => setMaxYear(value as number)}
           />
           <SelectInput
             label="Sort:"
-            options={["title", "year"]}
+            options={["latest", "oldest", "highestrated", "lowestrated"]}
             value={sort}
-            setValue={setSort}
+            setValue={(value) => setSort(value as string)}
           />
         </div>
         <div className="filter-tags">

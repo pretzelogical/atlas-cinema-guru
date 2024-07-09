@@ -6,6 +6,8 @@
   justify-content: space-between;
   padding: 0px min(40px, 10vw);
   background-color: hsl(0, 0%, 4%);
+  position: relative;
+  z-index: 100;
 
   .header-user {
     display: flex;
@@ -39,8 +41,9 @@
 
 .sidebar-container,
 .sidebar-container-small {
-  padding: 10px 0px;
+  padding: 55px 0px;
   position: fixed;
+  top: 0;
   background-color: $COLOR_PRIMARY_FADED;
   height: 100vh;
 

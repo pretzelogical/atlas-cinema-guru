@@ -8,4 +8,14 @@
   .homepage-filters {
     margin: 20px 0px;
   }
+
+  .homepage-movies {
+    margin: 0px 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    li {
+      margin: 5px 10px;
+    }
+  }
 }

@@ -7,7 +7,7 @@ export type SelectInputProps = {
   options: string[];
   className?: string;
   value: number | string;
-  setValue: (x: unknown) => void;
+  setValue: (x: number | string) => void;
 };
 
 export default function SelectInput({

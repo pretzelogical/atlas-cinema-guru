@@ -8,7 +8,7 @@ export type InputProps = {
   type: string,
   className?: string,
   value: string | number,
-  setValue: (x: unknown) => void,
+  setValue: (x: string | number) => void,
   icon?: JSX.Element,
   inputAttributes?: object;
 };
