@@ -1,7 +1,9 @@
 import Tag from "../../components/movies/Tag";
 import MovieCard from "../../components/movies/MovieCard";
 import Filter from "../../components/movies/Filter";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import client from "../../client";
+import Button from "../../components/general/Button";
 
 
 export default function HomePage() {
@@ -27,6 +29,43 @@ export default function HomePage() {
   const [title, setTitle] = useState('');
   const [page, setPage] = useState(1);
 
+
+  const loadMovie = useCallback(() => {
+    const accessToken = localStorage.getItem('accessToken');
+    if (!accessToken) {
+      return;
+    }
+    let genreString = '';
+    for (const genre in genres) {
+      if (genres[genre]) {
+        genreString += `${genre},`;
+      }
+    }
+    genreString = genreString.slice(0, -1).toLowerCase();
+    console.log(genreString);
+    const routeParams = (
+      `page=${page}&minYear=${minYear}&maxYear=${maxYear}` +
+      `&sort=${sort}&title=${title}&genre=${genreString}`
+    );
+    console.log(routeParams);
+    client
+      .get(`/titles/advancedsearch?${routeParams}`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        }
+      })
+      .then((response) => {
+        setMovies(Array.from(response.data.titles));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [page, minYear, maxYear, sort, title, genres]);
+
+  useEffect(() => {
+    loadMovie();
+  }, [loadMovie]);
+
   return (
     <div className="homepage-container">
       <div className="homepage-filters">
@@ -39,68 +78,27 @@ export default function HomePage() {
           setSort={setSort}
           genres={genres}
           setGenres={setGenres}
-          title=""
-          setTitle={() => { }}
+          title={title}
+          setTitle={setTitle}
         />
       </div>
       <ul className="homepage-movies">
-        <MovieCard
-          title="GodHead: In a fiction, in a dream of passion"
-          description="Dreamers in a lonely circus"
-          imgURL="https://placehold.co/400x800"
-          tags={['First', 'Second']}
-          imdbId="tt9899344"
-        />
-        <MovieCard
-          title="GodHead: In a fiction, in a dream of passion"
-          description="Dreamers in a lonely circus"
-          imgURL="https://placehold.co/400x800"
-          tags={['First', 'Second']}
-          imdbId="tt9899344"
-        />
-        <MovieCard
-          title="GodHead: In a fiction, in a dream of passion"
-          description="Dreamers in a lonely circus"
-          imgURL="https://placehold.co/400x800"
-          tags={['First', 'Second']}
-          imdbId="tt9899344"
-        />
-        <MovieCard
-          title="GodHead: In a fiction, in a dream of passion"
-          description="Dreamers in a lonely circus"
-          imgURL="https://placehold.co/400x800"
-          tags={['First', 'Second']}
-          imdbId="tt9899344"
-        />
-        <MovieCard
-          title="GodHead: In a fiction, in a dream of passion"
-          description="Dreamers in a lonely circus"
-          imgURL="https://placehold.co/400x800"
-          tags={['First', 'Second']}
-          imdbId="tt9899344"
-        />
-        <MovieCard
-          title="GodHead: In a fiction, in a dream of passion"
-          description="Dreamers in a lonely circus"
-          imgURL="https://placehold.co/400x800"
-          tags={['First', 'Second']}
-          imdbId="tt9899344"
-        />
-        <MovieCard
-          title="GodHead: In a fiction, in a dream of passion"
-          description="Dreamers in a lonely circus"
-          imgURL="https://placehold.co/400x800"
-          tags={['First', 'Second']}
-          imdbId="tt9899344"
-        />
-        <MovieCard
-          title="GodHead: In a fiction, in a dream of passion"
-          description="Dreamers in a lonely circus"
-          imgURL="https://placehold.co/400x800"
-          tags={['First', 'Second']}
-          imdbId="tt9899344"
-        />
+        {movies.map((movie: unknown) => (
+          <MovieCard
+            title={(movie as { title: string; }).title}
+            description={(movie as { synopsis: string; }).synopsis}
+            imgURL={(movie as { imageurls: string[]; }).imageurls[0]}
+            tags={(movie as { genres: Array<string>; }).genres}
+            imdbId={(movie as { imdbId: string; }).imdbId}
+          />
+        ))}
       </ul>
+      <div className="homepage-pagination">
+        <Button
+          label="Load more"
+          onClick={() => setPage(page + 1)}
+        />
+      </div>
     </div>
   );
 }

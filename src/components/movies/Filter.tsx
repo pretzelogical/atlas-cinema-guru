@@ -14,7 +14,7 @@ export type FilterProps = {
   genres: { [key: string]: boolean },
   setGenres: (genres: { [key: string]: boolean }) => void,
   title: string,
-  setTitle: (title: string | unknown) => void;
+  setTitle: (title: string) => void;
 };
 
 

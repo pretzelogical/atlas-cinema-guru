@@ -26,7 +26,7 @@
   align-items: center;
   justify-content: start;
   width: 200px;
-  height: fit-content;
+  height: initial;
   background-color: $COLOR_BG_FADED;
   padding-bottom: 12px;
   .movie-card-image {
@@ -36,8 +36,10 @@
     align-items: end;
     width: 200px;
     height: 200px;
-    background-color: black;
-    background-size: contain;
+    flex-shrink: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     .movie-card-actions {
       display: flex;
       align-items: start;
@@ -56,8 +58,9 @@
     }
     .movie-card-title {
       text-align: left;
-      padding: 10px 6px;
+      padding: 10px 0px;
       margin: 0;
+      width: 100%;
       background-color: rgba(0, 0, 0, 0.514);
     }
   }
@@ -65,14 +68,20 @@
   .movie-card-description {
     text-overflow: ellipsis;
     font-size: 12px;
-    width: 100%;
     text-align: center;
+    p {
+      text-overflow: ellipsis;
+      height: 100%;
+      width: 100%;
+    }
   }
   .movie-card-tags {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
     justify-content: center;
+    align-self: end;
+    margin-top: auto;
     .movie-tag, .movie-tag-active {
       margin: 4px;
     }
@@ -108,7 +117,9 @@ $FILTER_INPUT_WIDTH: min(200px, 20vw);
     grid-column: 2 / 3;
     display: flex;
     flex-wrap: wrap;
-    justify-content: end;
+    width: 70%;
+    justify-content: start;
+    justify-self: end;
     .movie-tag, .movie-tag-active {
       margin: 4px;
     }

@@ -29,7 +29,6 @@ export default function MovieCard({
     isWatchLater,
     setIsWatchLater
   } = useMovieUserInfo(imdbId);
-  console.log('isFavorite: ', isFavorite, 'isWatchLater: ', isWatchLater);
 
   const handleClick = (type: string) => {
     const accessToken = localStorage.getItem('accessToken');
@@ -133,7 +132,9 @@ export default function MovieCard({
           </div>
           <p className="movie-card-title">{title}</p>
         </div>
-        <p className="movie-card-description">{description}</p>
+        <div className="movie-card-description">
+          <p>{description}</p>
+        </div>
         <div className="movie-card-tags">
           {tags.map((tag) => (
             <Tag
@@ -165,7 +166,6 @@ const useMovieUserInfo = (imdbId: string) => {
         },
       })
       .then((response) => {
-        console.log(response.data);
         if (response.data instanceof Array) {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const fav = response.data.find((movie: any) => movie.imdbId === imdbId);
@@ -186,11 +186,10 @@ const useMovieUserInfo = (imdbId: string) => {
       })
       .then((response) => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        console.log(response.data);
-        // const watch = response.data.find((movie: any) => movie.imdbId === imdbId);
-        // if (watch) {
-        //   setIsWatchLater(true);
-        // }
+        const watch = response.data.find((movie: any) => movie.imdbId === imdbId);
+        if (watch) {
+          setIsWatchLater(true);
+        }
       })
       .catch((err) => {
         console.error(err);
