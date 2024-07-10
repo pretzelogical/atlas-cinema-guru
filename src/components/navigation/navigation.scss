@@ -41,7 +41,7 @@
 
 .sidebar-container,
 .sidebar-container-small {
-  padding: 55px 0px;
+  padding: 60px 0px;
   position: fixed;
   top: 0;
   background-color: $COLOR_PRIMARY_FADED;
@@ -112,24 +112,49 @@
   width: min(250px, 20vw);
 
   .sidebar-nav {
-    ul li button {
+    ul li .button--sidebar-page {
       align-items: start;
       width: 100%;
+      align-items: center;
+      height: 50px;
 
       svg {
         margin: 0px 10px 0px 0px;
+      }
+
+      label {
+        margin: 0;
+        margin-bottom: 5px;
+        width: fit-content;
+        height: 25px;
+        line-height: 30px;
+        display: flex;
+        word-wrap: nowrap;
+
+      }
+
+      &-selected {
+        @extend .button--sidebar-page;
+
+        &::after {
+          content: url('/arrow-right.svg');
+          margin-left: auto;
+          margin-right: 5px;
+        }
       }
     }
   }
 
   &-small {
-    width: 32px;
+    width: 50px;
+    
 
     .sidebar-nav {
       ul li button {
         width: 100%;
         align-items: center;
         justify-content: center;
+        height: 50px;
       }
     }
   }

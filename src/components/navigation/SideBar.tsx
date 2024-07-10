@@ -37,7 +37,7 @@ export default function SideBar({ activePage }: SideBarProps) {
   if (Object.keys(pagesRoutes).includes(activePage)) {
     pageSelected = activePage;
   } else {
-    console.log('Invalid page given to SideBar');
+    console.error('Invalid page given to SideBar');
   }
 
 

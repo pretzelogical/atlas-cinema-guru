@@ -97,7 +97,7 @@ export default function MovieCard({
     <div className="movie-card-container">
       <div className="movie-card-image"
         style={{
-          backgroundImage: `url(${imgURL})`
+          backgroundImage: `url(${imgURL}), url(/unavailable.png)`,
         }}>
         <div className="movie-card-actions">
           <Button

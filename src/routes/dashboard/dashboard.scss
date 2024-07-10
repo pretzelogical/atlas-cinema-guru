@@ -3,7 +3,7 @@
 
 .dashboard-container {
   .dashboard-content {
-    padding: 0px 50px;
+    padding: 0px 60px;
   }
 }
 
@@ -24,6 +24,12 @@
       display: flex;
       justify-content: center;
     }
+  }
+
+  .homepage-pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px;
   }
 }
 
