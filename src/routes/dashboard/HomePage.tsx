@@ -3,6 +3,7 @@ import Filter from "../../components/movies/Filter";
 import { useCallback, useEffect, useState } from "react";
 import client from "../../client";
 import Button from "../../components/general/Button";
+import MovieType from "./MovieType";
 
 
 export default function HomePage() {
@@ -43,7 +44,7 @@ export default function HomePage() {
     genreString = genreString.slice(0, -1).toLowerCase();
     const routeParams = (
       `page=${page}&minYear=${minYear}&maxYear=${maxYear}` +
-      `&sort=${sort}&title=${title}&genre=${genreString}`
+      `&sort=${sort}&title=${title}&genres=${genreString}`
     );
     client
       .get(`/titles/advancedsearch?${routeParams}`, {
@@ -80,14 +81,14 @@ export default function HomePage() {
         />
       </div>
       <ul className="homepage-movies">
-        {movies.map((movie: unknown) => (
-          <li key={(movie as { imdbId: string; }).imdbId}>
+        {movies.map((movie: MovieType) => (
+          <li key={movie.imdbId}>
             <MovieCard
-              title={(movie as { title: string; }).title}
-              description={(movie as { synopsis: string; }).synopsis}
-              imgURL={(movie as { imageurls: string[]; }).imageurls[0]}
-              tags={(movie as { genres: Array<string>; }).genres}
-              imdbId={(movie as { imdbId: string; }).imdbId}
+              title={movie.title}
+              description={movie.synopsis}
+              imgURL={movie.imageurls[0]}
+              tags={movie.genres}
+              imdbId={movie.imdbId}
             />
           </li>
         ))}

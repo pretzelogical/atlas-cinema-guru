@@ -3,11 +3,6 @@ import './App.scss';
 import router from './router';
 import { RouterProvider } from 'react-router-dom';
 
-export type AppState = {
-  isLoggedIn: boolean;
-  username: string;
-};
-
 function App() {
 
   return (

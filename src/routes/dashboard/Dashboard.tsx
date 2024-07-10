@@ -12,7 +12,7 @@ export default function Dashboard({
   children,
   activePage
 }: DashboardProps) {
-  const [isLoading] = useLoadUserFromServer();
+  useLoadUserFromServer();
 
   return (
     <div className="dashboard-container">
@@ -22,7 +22,6 @@ export default function Dashboard({
       />
       <div className="dashboard-content">
         {children ? children : <p>Dashboard needs a child</p>}
-        <p>{isLoading ? 'Loading...' : 'Loaded'}</p>
       </div>
     </div>
   )

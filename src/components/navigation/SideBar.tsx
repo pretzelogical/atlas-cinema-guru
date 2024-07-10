@@ -29,7 +29,7 @@ export default function SideBar({ activePage }: SideBarProps) {
   };
   const [isSmall, setIsSmall] = useState<boolean>(true);
   const [activities, setActivities] = useState<Array<ActivitiesState>>([]);
-  const [isLoading] = useGetActivitesFromServer(setActivities);
+  useGetActivitesFromServer(setActivities);
   const navigate = useNavigate();
 
   let pageSelected = 'Home';
